@@ -7,26 +7,24 @@ OpenAPI spec: `openapi.json`
 
 ### Installing
 
-1. Download mon-1-0.src.rpm
+1. If you use Ubuntu/Debian:
 
-2. If you use CentOS/RHEL, run:
+Download `mon_1.0-1.deb`
+
+Run:
+
+```shell
+sudo dpkg -i  mon_1.0-1.deb
+``` 
+
+If you use CentOS/RHEL:
+
+Download `mon-1-0.src.rpm`
+
+Run:
 
 ```shell
 sudo rpm –i mon-1-0.src.rpm
-```
-
-If you use Ubuntu/Debian, run:
-
-```shell
-sudo apt-get install alien dpkg-dev debhelper build-essential
-```
-
-```shell
-sudo alien mon-1-0.src.rpm
-```
-
-```shell
-sudo dpkg -i mon-1-0.src.deb
 ```
 
 3. Run:
