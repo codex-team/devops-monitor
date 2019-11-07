@@ -2,7 +2,8 @@
 
 Collects data from local server and sends it to example.com
 
-Server must respond with status 204. 
+Server must respond with status 204.
+ 
 OpenAPI spec: `openapi.json`
 
 ### Installing
