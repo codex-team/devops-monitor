@@ -7,7 +7,7 @@ OpenAPI spec: `openapi.json`
 
 ### Installing
 
-1. If you use Ubuntu/Debian:
+#### 1. If you use Ubuntu/Debian:
 
 Download `mon_1.0-1.deb`
 
@@ -17,7 +17,7 @@ Run:
 sudo dpkg -i  mon_1.0-1.deb
 ``` 
 
-If you use CentOS/RHEL:
+#### If you use CentOS/RHEL:
 
 Download `mon-1-0.src.rpm`
 
@@ -27,13 +27,13 @@ Run:
 sudo rpm –i mon-1-0.src.rpm
 ```
 
-3. Run:
+#### 2. Run:
 
 ```shell
 sudo crontab -e 
 ```
 
-4. Write into your crontab file:
+#### 3. Write into your crontab file:
 
 ```shell
 SHELL=/bin/bash
