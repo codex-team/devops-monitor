@@ -1,6 +1,6 @@
 # DevOps monitor
 
-Collects data from local server and sends it to api.devops.codex.so
+Collects data from local server and sends it to `api.devops.codex.so`
 
 OpenAPI spec: `openapi.json`
 
