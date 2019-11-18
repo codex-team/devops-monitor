@@ -1,6 +1,13 @@
 #!/bin/bash
 
-server_address=$1
+server_address=$1 
+regex='^[a-zA-Z0-9\-\_\.\:\/]*$'      
+
+if [[ ! $server_address =~ $regex ]]; 
+then
+	echo ERROR: incorrect server address
+	exit 1
+fi
 
 script=`realpath $0`
 cwd=`dirname $script`
