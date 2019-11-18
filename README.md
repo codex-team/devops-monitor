@@ -1,9 +1,44 @@
 # DevOps monitor
 
-Collect data from local server and send it to example.com 
+Collects data from local server and sends it to example.com
+
+Server must respond with status 204.
+ 
+OpenAPI spec: `openapi.json`.
+
+### Installing
+
+#### 1. If you use Ubuntu/Debian:
+
+Download `mon_1.0-1.deb`
+
+Run:
 
 ```shell
-./parse.sh http://example.com/monitor/v1/server-data?server-name=abc.com
+sudo dpkg -i  mon_1.0-1.deb
+``` 
+
+#### If you use CentOS/RHEL:
+
+Download `mon-1-0.src.rpm`
+
+Run:
+
+```shell
+sudo rpm –i mon-1-0.src.rpm
 ```
-Server must respond with status 204.
-The server side can be generated from `openapi.json` on http://editor.swagger.io
+
+#### 2. Run:
+
+```shell
+sudo crontab -e 
+```
+
+#### 3. Write into your crontab file:
+
+```shell
+SHELL=/bin/bash
+
+*/1 * * * * /opt/mon/mon.sh http://example.com/server-data?server-name=abc.com
+```
+In this example the data is being collected every 1 minute, but you can set any other time interval.
