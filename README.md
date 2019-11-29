@@ -37,6 +37,6 @@ sudo crontab -e
 ```shell
 SHELL=/bin/bash
 
-*/1 * * * * /opt/mon/mon.sh http://api.devops.codex.so/server-data?server-name=your-server-name.com
+*/1 * * * * /opt/mon/mon.sh https://api.devops.codex.so/server-data?server-name=your-server-name.com
 ```
 In this example the data is being collected every 1 minute, but you can set any other time interval.
