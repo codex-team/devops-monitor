@@ -1,13 +1,13 @@
 #!/bin/bash
 
 server_address=$1 
-#regex='^[a-zA-Z0-9\?=-\_\.\:\/]*$'      
+regex='^[a-zA-Z0-9\=\-\_\.\:\/]*$'      
 
-#if [[ ! $server_address =~ $regex ]]; 
-#then
-#	echo ERROR: incorrect server address
-#	exit 1
-#fi
+if [[ ! $server_address =~ $regex ]]; 
+then
+	echo ERROR: incorrect server address
+	exit 1
+fi
 
 script=`realpath $0`
 cwd=`dirname $script`
@@ -29,12 +29,12 @@ cat >> sysinfo.json <<EOF
 	"cpu-usage": $("$cwd/cpu.sh"),
 EOF
 
-#getRAM
-#getDiskInfo
-#getRoute
-#getServices
-#getContainers
-#getImages
+getRAM
+getDiskInfo
+getRoute
+getServices
+getContainers
+getImages
 getNGINX
 
 cat >> sysinfo.json <<EOF
