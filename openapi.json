@@ -16,7 +16,7 @@
     }
   ],
   "paths": {
-    "/server-data": {
+    "/": {
       "post": {
         "summary": "Deliver server data",
         "operationId": "pushData",
@@ -96,13 +96,7 @@
           "nginx-info": {
             "$ref": "#/components/schemas/NginxInfo"
           }
-        },
-        "required": [
-          "hostname",
-          "cpu-usage",
-          "memory-usage",
-          "disk-info"
-        ]
+        }
       },
       "DiskInfo": {
         "type": "array",
