@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "{apiRoot}/monitor/v1",
+      "url": "{apiRoot}/services",
       "variables": {
         "apiRoot": {
           "default": "https://api.devops.codex.so"
@@ -16,7 +16,7 @@
     }
   ],
   "paths": {
-    "/": {
+    "/services": {
       "post": {
         "summary": "Deliver server data",
         "operationId": "pushData",
