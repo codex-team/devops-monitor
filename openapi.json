@@ -7,16 +7,16 @@
   },
   "servers": [
     {
-      "url": "{apiRoot}/monitor/v1",
+      "url": "{apiRoot}/services",
       "variables": {
         "apiRoot": {
-          "default": "https://example.com"
+          "default": "https://api.devops.codex.so"
         }
       }
     }
   ],
   "paths": {
-    "/server-data": {
+    "/services": {
       "post": {
         "summary": "Deliver server data",
         "operationId": "pushData",
@@ -96,13 +96,7 @@
           "nginx-info": {
             "$ref": "#/components/schemas/NginxInfo"
           }
-        },
-        "required": [
-          "hostname",
-          "cpu-usage",
-          "memory-usage",
-          "disk-info"
-        ]
+        }
       },
       "DiskInfo": {
         "type": "array",

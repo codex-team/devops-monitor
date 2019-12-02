@@ -6,35 +6,30 @@
 
 function getNGINX
 {
-	local nginxinf=$(systemctl status nginx)
 	local comma=""
-	local stat=$(echo $nginxinf | awk 'NR==3{print}' | cut -b 12-) #getting status of nginx server
-	local proc=$(echo $nginxinf | awk 'NR==5{print}' | cut -b 12-) #getting name of running process
+	local stat=`systemctl status nginx | awk 'NR==3{print}' | cut -b 12-` #getting status of nginx server
 
 cat >> sysinfo.json <<EOF
         "nginx-info":
 	{
 		"status": "$stat",
-		"process": "$proc",
 		"sites":
 		[
 EOF
 
 	#getting information about nginx sites on this server
-	local sitesinf=$(ls /etc/nginx/sites-available/*.conf)
+	local sites_available=`ls /etc/nginx/sites-available/`
+	local n=`echo $sites_available | wc -w`
 
-	while read -r line; do
-		local name=$(echo $sitesinf  | egrep -o 'server_name .+' | awk '{print $2}')
-		local port=$(echo $sitesinf | egrep -o 'listen [0-9]+' | awk '{print $2}')
+	for (( i=1; i <= $n; i++ ))
+        do
+		local site=`echo $sites_available | awk -F" " '{print $'$i'}'`
         	cat >> sysinfo.json <<EOF
 			$comma
-                	{       
-                        	"server-name": "$name",
-                        	"port": "$port"
-                	} 
+                	 "site-name": "$site" 
 EOF
 		comma=","
-	done <<< "$sitesinf"
+	done
 
 cat >> sysinfo.json <<EOF
 		]

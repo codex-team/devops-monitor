@@ -1,10 +1,8 @@
 # DevOps monitor
 
-Collects data from local server and sends it to example.com
+Collects data from local server and sends it to `api.devops.codex.so`
 
-Server must respond with status 204.
- 
-OpenAPI spec: `openapi.json`.
+OpenAPI spec: `openapi.json`
 
 ### Installing
 
@@ -39,6 +37,6 @@ sudo crontab -e
 ```shell
 SHELL=/bin/bash
 
-*/1 * * * * /opt/mon/mon.sh http://example.com/server-data?server-name=abc.com
+*/1 * * * * /opt/mon/mon.sh https://api.devops.codex.so/services
 ```
 In this example the data is being collected every 1 minute, but you can set any other time interval.

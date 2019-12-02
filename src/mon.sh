@@ -1,6 +1,6 @@
 #!/bin/bash
 
-server_address=$1
+server_address='https://api.devops.codex.so/services'
 
 script=`realpath $0`
 cwd=`dirname $script`
@@ -15,16 +15,22 @@ source "$cwd/nginxInfo.sh"
 
 cat > sysinfo.json <<EOF
 {
-        "hostname": "$(hostname)",
-	"cpu-usage": $("$cwd/cpu.sh"),
 EOF
 
-getRAM
-getDiskInfo
-getRoute
-getServices
-getContainers
-getImages
+cat >> sysinfo.json <<EOF
+	"hostname": "$(hostname)",
+	"name": "nginx-info",
+	"project_token": "321084yr1873y4813yr8ewyg3",
+EOF
+#	"cpu-usage": $("$cwd/cpu.sh"),
+#EOF
+
+#getRAM
+#getDiskInfo
+#getRoute
+#getServices
+#getContainers
+#getImages
 getNGINX
 
 cat >> sysinfo.json <<EOF
