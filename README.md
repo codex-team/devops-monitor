@@ -8,22 +8,22 @@ OpenAPI spec: `openapi.json`
 
 #### 1. If you use Ubuntu/Debian:
 
-Download `mon_1.0-1.deb`
+Download `monitor.deb`
 
 Run:
 
 ```shell
-sudo dpkg -i  mon_1.0-1.deb
+sudo dpkg -i  monitor.deb
 ``` 
 
 #### If you use CentOS/RHEL:
 
-Download `mon-1-0.src.rpm`
+Download `monitor-1-0.src.rpm`
 
 Run:
 
 ```shell
-sudo rpm –i mon-1-0.src.rpm
+sudo rpm -i monitor-1-0.src.rpm
 ```
 
 #### 2. Run:
@@ -37,6 +37,6 @@ sudo crontab -e
 ```shell
 SHELL=/bin/bash
 
-*/1 * * * * /opt/mon/mon.sh https://api.devops.codex.so/services
+*/1 * * * * /usr/local/bin/src/monitor.sh https://api.devops.codex.so/services
 ```
 In this example the data is being collected every 1 minute, but you can set any other time interval.
