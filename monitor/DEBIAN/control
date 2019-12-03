@@ -1,0 +1,5 @@
+Package: monitor
+Version: 1
+Architecture: amd64
+Maintainer: CodeX
+Description: devops monitor board

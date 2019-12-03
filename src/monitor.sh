@@ -1,7 +1,13 @@
 #!/bin/bash
 
+################################################
+# The main script which collects server data
+# and sends it to api.devops.codex.so
+###############################################
+
 server_address='https://api.devops.codex.so/services'
 
+#Location of the scripts
 script=`realpath $0`
 cwd=`dirname $script`
 
@@ -25,6 +31,7 @@ EOF
 #	"cpu-usage": $("$cwd/cpu.sh"),
 #EOF
 
+#Calls functions to get server data
 #getRAM
 #getDiskInfo
 #getRoute

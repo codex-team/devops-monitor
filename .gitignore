@@ -1,4 +1,4 @@
 makePackages.sh
 sysinfo.json
 mon.tar
-mon_*/
+monitor_*/
