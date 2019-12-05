@@ -26,7 +26,7 @@ EOF
 		local site=`echo $sites_available | awk -F" " '{print $'$i'}'`
         	cat >> sysinfo.json <<EOF
 			$comma
-                	 "site-name": "$site" 
+                	 "$site" 
 EOF
 		comma=","
 	done

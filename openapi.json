@@ -266,31 +266,20 @@
           "status": {
             "type": "string"
           },
-          "process": {
-            "type": "string"
-          },
           "sites": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "server-name": {
-                  "type": "string"
-                },
-                "port": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "server-name",
-                "port"
-              ]
-            }
+            "type": "object",
+            "properties": {
+              "site-name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "site-name"
+            ]
           }
         },
         "required": [
           "status",
-          "process",
           "sites"
         ]
       }
