@@ -267,15 +267,10 @@
             "type": "string"
           },
           "sites": {
-            "type": "object",
-            "properties": {
-              "site-name": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "site-name"
-            ]
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         },
         "required": [
