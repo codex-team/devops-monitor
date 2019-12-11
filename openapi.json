@@ -24,7 +24,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ServerData"
+                "$ref": "#/components/schemas/serverData"
               }
             }
           }
@@ -39,31 +39,28 @@
   },
   "components": {
     "schemas": {
-      "ServerData": {
+      "serverData": {
         "type": "object",
         "properties": {
           "hostname": {
             "type": "string"
           },
-          "project_token": {
+          "projectToken": {
             "type": "string"
           },
           "websites": {
             "type": "object",
             "properties": {
-              "status": {
+              "name": {
                 "type": "string"
               },
-              "sites": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "status": {
+                "type": "string"
               }
             },
             "required": [
               "status",
-              "sites"
+              "name"
             ]
           }
         }
