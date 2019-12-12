@@ -25,8 +25,8 @@ EOF
 
 cat >> sysinfo.json <<EOF
 	"hostname": "$(hostname)",
-	"name": "nginx-info",
-	"project_token": "321084yr1873y4813yr8ewyg3",
+	"name": "websites",
+	"projectToken": "321084yr1873y4813yr8ewyg3",
 EOF
 #	"cpu-usage": $("$cwd/cpu.sh"),
 #EOF
