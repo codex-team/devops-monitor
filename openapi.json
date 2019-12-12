@@ -49,13 +49,16 @@
             "type": "string"
           },
           "websites": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "status": {
-                "type": "string"
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                }
               }
             },
             "required": [

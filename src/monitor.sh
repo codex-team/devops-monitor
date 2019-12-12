@@ -17,7 +17,7 @@ source "$cwd/routeTable.sh"
 source "$cwd/servicesInfo.sh"
 source "$cwd/containers.sh"
 source "$cwd/images.sh"
-source "$cwd/nginxInfo.sh"
+source "$cwd/websites.sh"
 
 cat > sysinfo.json <<EOF
 {

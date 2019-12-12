@@ -7,14 +7,11 @@
 function getNGINX
 {
 	local comma=""
-	local stat=`systemctl status nginx | awk 'NR==3{print}' | cut -b 12-` #getting status of nginx server
 
 cat >> sysinfo.json <<EOF
-        "nginx-info":
-	{
-		"status": "$stat",
-		"sites":
-		[
+        "websites":
+	[
+		
 EOF
 
 	#getting information about nginx sites on this server
@@ -26,13 +23,15 @@ EOF
 		local site=`echo $sites_available | awk -F" " '{print $'$i'}'`
         	cat >> sysinfo.json <<EOF
 			$comma
-                	 "$site" 
+			{
+				"name": "$site",
+				"status": "enabled"
+			}
 EOF
 		comma=","
 	done
 
 cat >> sysinfo.json <<EOF
-		]
-	}
+	]
 EOF
 }
