@@ -26,6 +26,8 @@ cat > sysinfo.json <<EOF
 	"hostname": "$(hostname)",
 	"name": "websites",
 	"projectToken": "$(projectToken)",
+	"payload":
+	{
 EOF
 #	"cpu-usage": $("$cwd/cpu.sh"),
 #EOF
@@ -40,6 +42,7 @@ EOF
 getNGINX
 
 cat >> sysinfo.json <<EOF
+	}
 }
 EOF
 
