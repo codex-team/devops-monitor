@@ -19,14 +19,13 @@ source "$cwd/containers.sh"
 source "$cwd/images.sh"
 source "$cwd/websites.sh"
 
+projectToken=$1
+
 cat > sysinfo.json <<EOF
 {
-EOF
-
-cat >> sysinfo.json <<EOF
 	"hostname": "$(hostname)",
 	"name": "websites",
-	"projectToken": "321084yr1873y4813yr8ewyg3",
+	"projectToken": "$(projectToken)",
 EOF
 #	"cpu-usage": $("$cwd/cpu.sh"),
 #EOF

@@ -37,6 +37,6 @@ sudo crontab -e
 ```shell
 SHELL=/bin/bash
 
-*/1 * * * * /usr/local/bin/src/monitor.sh https://api.devops.codex.so/services
+*/1 * * * * /usr/local/bin/src/monitor.sh projectToken
 ```
 In this example the data is being collected every 1 minute, but you can set any other time interval.
