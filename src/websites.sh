@@ -8,9 +8,9 @@ function getNGINX
 {
 	local comma=""
 
-cat >> sysinfo.json <<EOF
-        "websites":
-	[
+cat >> $cwd/sysinfo.json <<EOF
+	        "websites":
+		[
 		
 EOF
 
@@ -21,7 +21,7 @@ EOF
 	for (( i=1; i <= $n; i++ ))
         do
 		local site=`echo $sites_available | awk -F" " '{print $'$i'}'`
-        	cat >> sysinfo.json <<EOF
+        	cat >> $cwd/sysinfo.json <<EOF
 			$comma
 			{
 				"name": "$site",
@@ -31,7 +31,7 @@ EOF
 		comma=","
 	done
 
-cat >> sysinfo.json <<EOF
-	]
+cat >> $cwd/sysinfo.json <<EOF
+		]
 EOF
 }

@@ -9,7 +9,7 @@ function getImages
 {
 	local images=$(docker image ls | tail -n +2)
 
-cat >> sysinfo.json <<EOF
+cat >> $cwd/sysinfo.json <<EOF
         "docker-images":
         [
 EOF
@@ -22,7 +22,7 @@ EOF
 	        created=$(echo $line | awk '{print $4 " " $5 " " $6}') #how long ago it was created
 	        size=$(echo $line | awk '{print $7}') #size in MB
 	        #now writing this data to json file
-	        cat >> sysinfo.json <<EOF  
+	        cat >> $cwd/sysinfo.json <<EOF  
         	$comma
                 {       
                         "repository": "$repo",
@@ -35,7 +35,7 @@ EOF
 		comma=","
 	done <<< "$images"
 
-	cat >> sysinfo.json <<EOF
+	cat >> $cwd/sysinfo.json <<EOF
         ],
 EOF
 

@@ -8,7 +8,7 @@ function getDiskInfo
 {
 	local disk_patritions=$(df -h | tail -n +2)
 	local comma=""
-	cat >> sysinfo.json <<EOF
+	cat >> $cwd/sysinfo.json <<EOF
         "disk-info":
         [
 EOF
@@ -20,7 +20,7 @@ EOF
 		local available=$(echo $line | awk '{print $4}')
         	local use=$(echo $line | awk '{print $5}')
 		local mounted=$(echo $line | awk '{print $6}')
-	        cat >> sysinfo.json <<EOF
+	        cat >> $cwd/sysinfo.json <<EOF
 		$comma
                 {       
                         "fs": "$filesystem",
@@ -34,7 +34,7 @@ EOF
 		comma=","
 	done <<< "$disk_patritions"
 
-cat >> sysinfo.json <<EOF
+cat >> $cwd/sysinfo.json <<EOF
         ],
 EOF
 }

@@ -21,7 +21,7 @@ source "$cwd/websites.sh"
 
 projectToken=$1
 
-cat > sysinfo.json <<EOF
+cat > $cwd/sysinfo.json <<EOF
 {
 	"hostname": "$(hostname)",
 	"name": "websites",
@@ -41,7 +41,7 @@ EOF
 #getImages
 getNGINX
 
-cat >> sysinfo.json <<EOF
+cat >> $cwd/sysinfo.json <<EOF
 	}
 }
 EOF
