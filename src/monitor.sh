@@ -25,7 +25,7 @@ cat > $cwd/sysinfo.json <<EOF
 {
 	"hostname": "$(hostname)",
 	"name": "websites",
-	"projectToken": "$(projectToken)",
+	"projectToken": "$projectToken",
 	"payload":
 	{
 EOF
@@ -46,4 +46,4 @@ cat >> $cwd/sysinfo.json <<EOF
 }
 EOF
 
-curl -X POST -d @'sysinfo.json' -H "accept: */*" -H "Content-Type: application/json" $server_address -v
+curl -X POST -d @'sysinfo.json' -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZTA2NDJhOTUxZWFlYTFiZmFlNTliMzAiLCJpYXQiOjE1Nzc0ODU5OTd9.F9wc21lP7zGPZJN0c9HpxBVNRKpEpbukdgmZkKc-fCci" -H "Content-Type: application/json" $server_address -v
