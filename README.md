@@ -2,41 +2,24 @@
 
 Collects data from local server and sends it to `api.devops.codex.so`
 
-OpenAPI spec: `openapi.json`
-
 ### Installing
 
-#### 1. If you use Ubuntu/Debian:
+1. Download one of the packages:
 
-Download `monitor.deb`
+[monitor.deb](monitor.deb) or [monitor.src.rpm](monitor-1-1.src.rpm)
 
-Run:
+2. Run:
 
 ```shell
 sudo dpkg -i  monitor.deb
 ``` 
-
-#### If you use CentOS/RHEL:
-
-Download `monitor-1-0.src.rpm`
-
-Run:
+Or
 
 ```shell
-sudo rpm -i monitor-1-0.src.rpm
+sudo rpm -i monitor*.src.rpm
 ```
-
-#### 2. Run:
+3. Run `configure.sh` to setup monitoring:
 
 ```shell
-sudo crontab -e 
+/opt/devops-monitor/configure.sh -p <time interval in cron format>
 ```
-
-#### 3. Write into your crontab file:
-
-```shell
-SHELL=/bin/bash
-
-*/1 * * * * /usr/local/bin/src/monitor.sh projectToken
-```
-In this example the data is being collected every 1 minute, but you can set any other time interval.
