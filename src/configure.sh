@@ -1,5 +1,7 @@
 #!/bin/bash
 
+authToken=$(cat .env | egrep -o 'DEVOPSBOARD_AUTH_TOKEN=[a-zA-Z0-9\.\-\_\+\/]+' | awk -F '=' '{print $2}')
+
 # write help message
 usage="$(basename "$0") [-h] [-p <cron format>] -- script to configure devops-monitor
 
@@ -31,19 +33,11 @@ while getopts ':hp:' option; do
 done
 shift $((OPTIND - 1))
 
-# get user credentials
-echo "E-Mail: "
-read email
-
-echo "Password: " 
-read -s password
-echo
-
-# login and get auth token 
-authToken=$(curl -X POST -H 'Content-Type: application/json' -d '{"email": "'$email'","password": "'$password'"}' https://api.devops.codex.so/auth/login | egrep -o '"jwt":"[a-zA-Z0-9\.\-\_\+\/]+"' | awk -F ':' '{print $2}' | egrep -o '[^"]+')
-
 # create project and get project token
 projectToken=$(curl -X POST -H 'Authorization: Bearer '$authToken'' -H 'Content-Type: application/json' -d '{"name":"'`hostname`'"}' https://api.devops.codex.so/projects | egrep -o '"token":"[a-zA-Z0-9\.\-\_\+\/]+"' | awk -F ':' '{print $2}' | egrep -o '[^"]+')
 
 # setup crontab file to launch periodically monitor.sh
-crontab -e < "$period /opt/devops-monitor/monitor.sh $authToken $projectToken"
+crontab -l > tmpcron
+echo "$period /opt/devops-monitor/monitor.sh $authToken $projectToken" >> tmpcron
+crontab tmpcron
+rm tmpcron

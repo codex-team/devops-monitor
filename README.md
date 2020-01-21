@@ -13,12 +13,18 @@ Collects data from local server and sends it to `api.devops.codex.so`
 ```shell
 sudo dpkg -i  monitor.deb
 ``` 
-Or
+   Or
 
 ```shell
 sudo rpm -i monitor*.src.rpm
 ```
-3. Run `configure.sh` to setup monitoring:
+3. Write your authentication token into `/opt/devops-monitor/.env`:
+
+```shell
+DEVOPSBOARD_AUTH_TOKEN=<your auth token>
+```
+
+4. Run `configure.sh` to setup monitoring:
 
 ```shell
 /opt/devops-monitor/configure.sh -p <time interval in cron format>
