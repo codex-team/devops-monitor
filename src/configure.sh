@@ -1,7 +1,5 @@
 #!/bin/bash
 
-serverAddress='https://api.devops.codex.so'
-
 # write help message
 usage="$(basename "$0") [-h] [-p <cron format>] -- script to configure devops-monitor
 
@@ -42,14 +40,12 @@ read -s password
 echo
 
 # login and get auth token 
-authToken=$(curl -X POST '$serverAddress/login' -H'Content-Type: application/json' -d'{"email": "$email","password": "$password"}'| egrep -o '\"jwt\":\"[a-zA-Z0-9]+\"' | awk -F ':' '{print $2}' | egrep -o '[^\"]+' )
+authToken=$(curl -X POST -H 'Content-Type: application/json' -d '{"email": "'$email'","password": "'$password'"}' https://api.devops.codex.so/auth/login | egrep -o '"jwt":"[a-zA-Z0-9\.\-\_\+]+"' | awk -F ':' '{print $2}' | egrep -o '[^"]+')
+echo $authToken
 
-# create project and get projectToken
-projectToken=$(curl -X POST '$serverAddress/projects' -H 'Authorization: Bearer $authToken' -H'Content-Type: application/json' -d'{"name":"$hostname"}'| egrep -o '\"projectToken\":\"[a-zA-Z0-9]+\"' | awk -F ':' '{print $2}' | egrep -o '[^\"]+' )
+# create project and get project token
+projectToken=$(curl -X POST -H 'Authorization: Bearer '$authToken'' -H 'Content-Type: application/json' -d '{"name":"'`hostname`'"}' https://api.devops.codex.so/projects | egrep -o '"token":"[a-zA-Z0-9\.\-\_\+]+"' | awk -F ':' '{print $2}' | egrep -o '[^"]+')
+echo $projectToken
 
 # setup crontab file to launch periodically monitor.sh
-cat >> crontab -e <<EOF
-SHELL=/bin/bash
-
-$period /opt/devops-monitor/monitor.sh $authToken $projectToken
-EOF
+crontab -e < "$period /opt/devops-monitor/monitor.sh $authToken $projectToken"
