@@ -1,3 +1,4 @@
 makePackages.sh
 sysinfo.json
 mon.tar
+.env
