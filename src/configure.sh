@@ -1,6 +1,6 @@
 #!/bin/bash
 
-authToken=$(cat .env | egrep -o 'DEVOPSBOARD_AUTH_TOKEN=[a-zA-Z0-9\.\-\_\+\/]+' | awk -F '=' '{print $2}')
+authToken=$(cat .env | egrep -o 'DEVOPSBOARD_AUTH_TOKEN=.+' | awk -F '=' '{print $2}')
 
 # write help message
 usage="$(basename "$0") [-h] [-p <cron format>] -- script to configure devops-monitor
