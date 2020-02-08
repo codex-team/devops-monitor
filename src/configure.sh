@@ -3,13 +3,13 @@
 authToken=$(cat .env | egrep -o 'DEVOPSBOARD_AUTH_TOKEN=.+' | awk -F '=' '{print $2}')
 
 # write help message
-usage="$(basename "$0") [-h] [-p <cron format>] -- script to configure devops-monitor
+usage="$(basename "$0") [-h] [-p '<cron format>'] -- script to configure devops-monitor
 
 where:
     -h  show this help text
-    -p  time interval to launch monitoring (in cron format)
+    -p  time interval to launch monitoring (cron format), in quotes
 
-Example: $(basename "$0") -p 0 0 * * *
+Example: $(basename "$0") -p '0 0 * * *'
 
 "
 period='0 0 * * *'
