@@ -27,5 +27,5 @@ DEVOPSBOARD_AUTH_TOKEN=<your auth token>
 4. Run `configure.sh` to setup monitoring:
 
 ```shell
-/opt/devops-monitor/configure.sh -p <time interval in cron format>
+/opt/devops-monitor/configure.sh -p '<time interval in cron format>'
 ```
