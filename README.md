@@ -18,12 +18,12 @@ sudo dpkg -i  monitor.deb
 ```shell
 sudo rpm -i monitor*.src.rpm
 ```
-3. Write your authentication token into `/opt/devops-monitor/.env`:
+3. Write your authentication and project tokens into `/opt/devops-monitor/.env`:
 
 ```shell
 DEVOPSBOARD_AUTH_TOKEN=<your auth token>
+DEVOPSBOARD_PROJECT_TOKEN=<your project token>
 ```
-
 4. Run `configure.sh` to setup monitoring:
 
 ```shell

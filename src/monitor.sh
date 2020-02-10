@@ -22,9 +22,12 @@ source "$cwd/websites.sh"
 authToken=$1
 projectToken=$2
 
+ip=`dig +short myip.opendns.com @resolver1.opendns.com`
+
 cat > $cwd/sysinfo.json <<EOF
 {
 	"name": "websites",
+	"ip": "$ip",
 	"projectToken": "$projectToken",
 	"payload":
 	{
