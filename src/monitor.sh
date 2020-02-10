@@ -18,16 +18,13 @@ source "$cwd/servicesInfo.sh"
 source "$cwd/containers.sh"
 source "$cwd/images.sh"
 source "$cwd/websites.sh"
+source "$cwd/ipAddr.sh"
 
-authToken=$1
 projectToken=$2
-
-ip=`dig +short myip.opendns.com @resolver1.opendns.com`
 
 cat > $cwd/sysinfo.json <<EOF
 {
 	"name": "websites",
-	"ip": "$ip",
 	"projectToken": "$projectToken",
 	"payload":
 	{
@@ -43,10 +40,11 @@ EOF
 #getContainers
 #getImages
 getNGINX
+getIpAddr
 
 cat >> $cwd/sysinfo.json <<EOF
 	}
 }
 EOF
 
-curl -X POST -d @'sysinfo.json' -H "Authorization: Bearer $authToken" -H "Content-Type: application/json" $serverAddress
+curl -X POST -d @'sysinfo.json' -H "Content-Type: application/json" $serverAddress

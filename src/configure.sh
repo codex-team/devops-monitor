@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # read tokens from .env
-authToken=$(cat .env | egrep -o 'DEVOPSBOARD_AUTH_TOKEN=.+' | awk -F '=' '{print $2}')
 projectToken=$(cat .env | egrep -o 'DEVOPSBOARD_PROJECT_TOKEN=.+' | awk -F '=' '{print $2}')
 
 # write help message
@@ -37,6 +36,6 @@ shift $((OPTIND - 1))
 
 # setup crontab file to launch periodically monitor.sh
 crontab -l > tmpcron
-echo "$period /opt/devops-monitor/monitor.sh $authToken $projectToken" >> tmpcron
+echo "$period /opt/devops-monitor/monitor.sh $projectToken" >> tmpcron
 crontab tmpcron
 rm tmpcron
