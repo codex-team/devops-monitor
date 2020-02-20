@@ -32,6 +32,6 @@ EOF
 	done
 
 cat >> $cwd/sysinfo.json <<EOF
-		]
+		],
 EOF
 }

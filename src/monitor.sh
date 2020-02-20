@@ -20,7 +20,7 @@ source "$cwd/images.sh"
 source "$cwd/websites.sh"
 source "$cwd/ipAddr.sh"
 
-projectToken=$2
+projectToken=$1
 
 cat > $cwd/sysinfo.json <<EOF
 {
