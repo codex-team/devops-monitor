@@ -4,7 +4,7 @@
 projectToken=$(cat .env | egrep -o 'DEVOPSBOARD_PROJECT_TOKEN=.+' | awk -F '=' '{print $2}')
 
 # write help message
-usage="$(basename "$0") [-h] [-p '<cron format>'] -- script to configure devops-monitor
+usage="$(basename "$0") [-h] -p '<cron format>' -- script to configure devops-monitor
 
 where:
     -h  show this help text
@@ -17,17 +17,22 @@ period='0 0 * * *'
 
 while getopts ':hp:' option; do
   case "$option" in
-    h) echo "$usage"
+    h) echo "Usage: $usage"
        exit
        ;;
-    p) period=$OPTARG
+    p) if [[ $OPTARG =~ ^-[h/p]$ ]]; then
+                echo "Unknow argument $OPTARG for option $opt"
+                echo "Usage: $usage"
+                exit 1
+       fi
+       period=$OPTARG
        ;;
     :) printf "missing argument for -%s\n" "$OPTARG" >&2
-       echo "$usage" >&2
+       echo "Usage: $usage" >&2
        exit 1
        ;;
-   \?) printf "illegal option: -%s\n" "$OPTARG" >&2
-       echo "$usage" >&2
+    *) printf "illegal option: -%s\n" "$OPTARG" >&2
+       echo "Usage: $usage" >&2
        exit 1
        ;;
   esac
