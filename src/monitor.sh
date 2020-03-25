@@ -36,7 +36,7 @@ EOF
 #getRAM
 #getDiskInfo
 #getRoute
-#getServices
+getServices
 #getContainers
 #getImages
 getNGINX

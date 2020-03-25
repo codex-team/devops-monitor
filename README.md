@@ -6,18 +6,15 @@ Collects data from local server and sends it to `api.devops.codex.so`
 
 1. Download one of the packages:
 
-[monitor.deb](monitor.deb) or [monitor.src.rpm](monitor-1-1.src.rpm)
+[monitor.deb](monitor.deb) or [monitor.rpm](monitor-1.0-1.src.rpm)
 
-2. Run:
+2. Install package:
 
 ```shell
-sudo dpkg -i  monitor.deb
+$ sudo apt install monitor*.deb
+Or
+$ sudo dnf install monitor*.rpm 
 ``` 
-   Or
-
-```shell
-sudo rpm -i monitor*.src.rpm
-```
 3. Write your integration token into `/opt/devops-monitor/.env`:
 
 ```shell
