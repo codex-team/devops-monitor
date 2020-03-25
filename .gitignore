@@ -1,0 +1,4 @@
+makePackages.sh
+sysinfo.json
+*.tar
+*.env

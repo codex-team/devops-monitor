@@ -1,44 +1,27 @@
 # DevOps monitor
 
-Collects data from local server and sends it to example.com
-
-Server must respond with status 204.
- 
-OpenAPI spec: `openapi.json`.
+Collects data from local server and sends it to `api.devops.codex.so`
 
 ### Installing
 
-#### 1. If you use Ubuntu/Debian:
+1. Download one of the packages:
 
-Download `mon_1.0-1.deb`
+[monitor.deb](monitor.deb) or [monitor.rpm](monitor-1.0-1.src.rpm)
 
-Run:
+2. Install package:
 
 ```shell
-sudo dpkg -i  mon_1.0-1.deb
+$ sudo apt install monitor*.deb
+Or
+$ sudo dnf install monitor*.rpm 
 ``` 
-
-#### If you use CentOS/RHEL:
-
-Download `mon-1-0.src.rpm`
-
-Run:
+3. Write your integration token into `/opt/devops-monitor/.env`:
 
 ```shell
-sudo rpm –i mon-1-0.src.rpm
+DEVOPSBOARD_PROJECT_TOKEN=<your project token>
 ```
-
-#### 2. Run:
+4. Run `configure.sh` to setup monitoring:
 
 ```shell
-sudo crontab -e 
+/opt/devops-monitor/configure.sh -p '<time interval in cron format>'
 ```
-
-#### 3. Write into your crontab file:
-
-```shell
-SHELL=/bin/bash
-
-*/1 * * * * /opt/mon/mon.sh http://example.com/server-data?server-name=abc.com
-```
-In this example the data is being collected every 1 minute, but you can set any other time interval.

@@ -8,7 +8,7 @@ function getRoute
 {
 	local route_table=$(route -n | tail -n +3)
 	local comma=""
-cat >> sysinfo.json <<EOF
+cat >> $cwd/sysinfo.json <<EOF
 	"route-table":
         [
 EOF
@@ -23,7 +23,7 @@ EOF
 		local use=$(echo $line | awk -F" " '{print $7}')
 		local iface=$(echo $line | awk -F" " '{print $8}')
 
-	        cat >> sysinfo.json <<EOF
+	        cat >> $cwd/sysinfo.json <<EOF
 		$comma
                 {       
                         "destination": "$destination",
@@ -39,7 +39,7 @@ EOF
 		comma=","
 	done <<< "$route_table"
 
-cat >> sysinfo.json <<EOF
+cat >> $cwd/sysinfo.json <<EOF
         ],
 EOF
 }

@@ -9,7 +9,7 @@ function getContainers
 {
 	local containers=$(docker ps -a | tail -n +2)
 	local comma=""
-	cat >> sysinfo.json <<EOF
+	cat >> $cwd/sysinfo.json <<EOF
         "docker-containers":
         [
 EOF
@@ -22,7 +22,7 @@ EOF
         	local stat=$(echo $line | awk -F" " '{print $8}')
 	        local ports=$(echo $line | awk -F" " '{print $13}' | egrep -o '[0-9\.\: ]')
         	local name=$(echo $line | awk -F" " '{print $NF}')
-        	cat >> sysinfo.json <<EOF
+        	cat >> $cwd/sysinfo.json <<EOF
 		$comma
                 {       
                         "id": "$id",
@@ -37,7 +37,7 @@ EOF
 	comma=","
 	done <<< "$containers"
 
-	cat >> sysinfo.json <<EOF
+	cat >> $cwd/sysinfo.json <<EOF
         ],
 EOF
 }

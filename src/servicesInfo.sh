@@ -8,7 +8,7 @@ function getServices
 {
 	local processes=$(systemctl list-units | grep running| sort)
 	local comma=""
-	cat >> sysinfo.json <<EOF
+	cat >> $cwd/sysinfo.json <<EOF
 	"running-services":
 	[
 EOF
@@ -21,7 +21,7 @@ EOF
 		state+=", " 
 		state+=$(echo $line | awk -F" " '{print $4}')
 		
-        cat >> sysinfo.json <<EOF
+        cat >> $cwd/sysinfo.json <<EOF
 		$comma
         	{       
                 	"unit": "$name",
@@ -31,7 +31,7 @@ EOF
 		comma=","
 	done <<< "$processes"
 
-cat >> sysinfo.json <<EOF
+cat >> $cwd/sysinfo.json <<EOF
 	],
 EOF
 }
